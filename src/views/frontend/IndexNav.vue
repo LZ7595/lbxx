@@ -50,7 +50,7 @@
     </div>
     <div class="hygl" >
         <h3 class="text-center">欢迎来到蜡笔小新分享站！</h3>
-        <p class="text-center">这里致力于收集分享蜡笔小新动漫的图片、视频、影片等资源6</p>
+        <p class="text-center">这里致力于收集分享蜡笔小新动漫的图片、视频、影片等资源</p>
     </div>
     <div class="img-fluid muluimg">
         <div class="container lml">
