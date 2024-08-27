@@ -19,6 +19,7 @@ export const useUserStore = defineStore('user', {
                         this.user = response.data.data.user;
                         this.isAuthenticated = true;
                         localStorage.setItem('user-token', this.token);
+                        localStorage.setItem('isAuthenticated', this.isAuthenticated)
                         return {success: true, user: this.user}; // 返回一个成功对象
                     }
                     case 500: {

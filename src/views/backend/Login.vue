@@ -39,7 +39,7 @@
 <script>
 import { ref } from 'vue';
 import { useUserStore } from '@/store/user';
-import router from "../../router.js"; // 确保路径正确
+import router from "@/router.js"; // 确保路径正确
 
 export default {
     name: "Login",
@@ -56,9 +56,10 @@ export default {
                 const response = await userStore.login(loginForm.value); // 调用 store 中的 login 方法
                 if (response.success) {
                     // 登录成功，可以在这里添加其他逻辑，如路由跳转
-                    console.log(response)
-                    // alert('登录成功')
-                    // router.push('/');
+                    const redirect = router.currentRoute.value.query.redirect || '/';
+                    alert('登录成功')
+                    router.push(redirect);
+
                 } else {
                     // 登录失败处理
                     console.error('Login failed:', response.error);

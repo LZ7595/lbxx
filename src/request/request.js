@@ -5,42 +5,26 @@ const request = axios.create({
         "Content-type": "application/json;charset=UTF-8"
     }
 })
-// request.interceptors.request.use((config) => {
-//     const userStore = useUserStore()
-//     if (userStore.token) {
-//         config.headers.token = userStore.token
-//     }
-//     return config
-// })
+function getJwtToken() {
+    // 这里应该是你获取JWT令牌的逻辑
+    // 例如，从localStorage或Vuex等地方获取
+    return localStorage.getItem('user-token') || '';
+}
 
-//响应拦截
-// request.interceptors.response.use(
-//     (response) => {
-//         return response.data
-//     },
-//     (error) => {
-//         let message = ''
-//         const status = error.response.status
-//         switch (status) {
-//             case 401:
-//                 message = 'TOKEN过期'
-//                 break
-//             case 403:
-//                 message = '无权访问'
-//                 break
-//             case 404:
-//                 message = '请求地址错误'
-//                 break
-//             case 500:
-//                 message = '服务器出现问题'
-//                 break
-//             default:
-//                 message = '网络出现问题'
-//                 break
-//         }
-//         //提示错误信息
-//         //...
-//         return Promise.reject(error)
-//     },
-// )
+// 添加一个请求拦截器
+request.interceptors.request.use(
+    config => {
+        // 在发送请求之前做些什么
+        // 在这里，我们检查是否有JWT令牌，并添加到Authorization头中
+        const token = getJwtToken();
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    error => {
+        // 对请求错误做些什么
+        return Promise.reject(error);
+    }
+);
 export default request
