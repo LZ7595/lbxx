@@ -7,6 +7,7 @@ import Rwjs from './views/frontend/rwjs.vue';
 import Gywe from './views/frontend/gywe.vue';
 import Gkxq from './views/frontend/gkIndex.vue';
 import Login from './views/backend/Login.vue';
+import AdminHome from './views/backend/adminHome.vue';
 
 // 定义用户路由
 const userRouter = [
@@ -50,7 +51,22 @@ const adminRouter = [
         name: 'Login',
         component: Login
     },
-    {}
+    {
+        path: '/admin/',
+        component: AdminHome,
+        // meta: {requiresAuth: true}
+        children: [
+            {
+                path: '',
+                component: () => import('./views/backend/rcgl.vue')
+            },
+            {
+                path: 'jcgl',
+                component: Rcdh
+            }
+
+            ]
+    }
 ];
 
 

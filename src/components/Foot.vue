@@ -23,7 +23,7 @@
                     <p><h5><strong>联系分享站</strong></h5></p>
                     <p><a href="javascript:void(0);" onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin=2567407595&site=qq&menu=yes');">意见反馈</a></p>
                     <p><a href="mailto:2567407595@qq.com" target="_blank">电子邮件</a></p>
-                    <p><a href="#" target="_blank">后台管理</a></p>
+                    <p><router-link to="/admin">后台管理</router-link></p>
                 </li>
 
             </ul>

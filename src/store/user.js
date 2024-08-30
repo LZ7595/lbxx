@@ -1,6 +1,7 @@
 // store/user.js
 import {defineStore} from 'pinia';
 import request from "@/request/request.js";
+import axios from "axios";
 
 export const useUserStore = defineStore('user', {
     state: () => ({
@@ -8,6 +9,15 @@ export const useUserStore = defineStore('user', {
         user: null,
         token: null,
     }),
+    persist: {
+        enable: true,
+        strategies: [
+            {
+                key: 'user',
+                storage: localStorage
+            }
+        ]
+    },
     actions: {
         async login(credentials) {
             try {
@@ -18,8 +28,6 @@ export const useUserStore = defineStore('user', {
                         this.token = response.data.data.token;
                         this.user = response.data.data.user;
                         this.isAuthenticated = true;
-                        localStorage.setItem('user-token', this.token);
-                        localStorage.setItem('isAuthenticated', this.isAuthenticated)
                         return {success: true, user: this.user}; // 返回一个成功对象
                     }
                     case 500: {
@@ -37,21 +45,23 @@ export const useUserStore = defineStore('user', {
         },
 
         logout() {
-            // 清除状态
-            this.reset();
-
-            // 清除 localStorage 中的令牌
-            localStorage.removeItem('user-token');
-
-            // 可以在这里触发一个事件或通知，让其他组件知道用户已登出
-            // 例如：通过 Vuex 的 mutation 或 Pinia 的 action 触发一个登出状态
+            request.post(`/api/logout`).then(
+                () => {this.reset();
+                    console.log("登出成功")
+                }
+            ).catch(error => {
+                // 使用.catch()来处理错误
+                console.error('Logout failed', error);
+            });
         },
 
         reset() {
             this.token = null;
             this.user = null;
             this.isAuthenticated = false;
-        },
+            localStorage.removeItem('user')
+
+        }
     },
     getters: {
         isLoggedIn: (state) => state.isAuthenticated,

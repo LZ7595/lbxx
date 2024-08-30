@@ -50,15 +50,14 @@ export default {
         });
 
         const userStore = useUserStore();
-
         async function handleSubmit() {
             try {
                 const response = await userStore.login(loginForm.value); // 调用 store 中的 login 方法
                 if (response.success) {
                     // 登录成功，可以在这里添加其他逻辑，如路由跳转
                     const redirect = router.currentRoute.value.query.redirect || '/';
-                    alert('登录成功')
-                    router.push(redirect);
+                    // alert('登录成功')
+                    // router.push(redirect);
 
                 } else {
                     // 登录失败处理
@@ -70,7 +69,6 @@ export default {
                 console.error('Error during login:', error);
             }
         }
-
         return {
             loginForm,
             handleSubmit
