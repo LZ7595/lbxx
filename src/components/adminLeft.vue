@@ -15,7 +15,7 @@
                         <el-icon><List /></el-icon>
                         <span>视频管理</span>
                     </template>
-                    <el-menu-item index="/admin/">日常动漫</el-menu-item>
+                    <el-menu-item index="/admin">日常动漫</el-menu-item>
                         <el-menu-item index="/admin/jcgl">剧场电影</el-menu-item>
                 </el-sub-menu>
                 <el-menu-item index="/admin/videoAdd">
