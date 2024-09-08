@@ -1,44 +1,34 @@
 import {createRouter, createWebHistory} from "vue-router";
-import Home from './views/frontend/home.vue';
-import IndexNav from "./views/frontend/IndexNav.vue";
-import Rcdh from './views/frontend/rcdh.vue';
-import Jcgy from './views/frontend/jcgy.vue';
-import Rwjs from './views/frontend/rwjs.vue';
-import Gywe from './views/frontend/gywe.vue';
-import Gkxq from './views/frontend/gkIndex.vue';
-import Login from './views/backend/Login.vue';
-import AdminHome from './views/backend/adminHome.vue';
-
 // 定义用户路由
 const userRouter = [
     {
         path: '/',
-        component: Home,
+        component: ()=> import('@/views/frontend/home.vue'),
+        redirect: '/home',
         children: [
             {
-                path: '',
-                component: IndexNav
+                path: 'home',
+                component: ()=> import('@/views/frontend/IndexNav.vue')
             },
             {
                 path: '/rcdh',
-                component: Rcdh,
-                // meta: {requiresAuth: true}
+                component: ()=> import('@/views/frontend/rcdh.vue'),
             },
             {
                 path: '/jcgy',
-                component: Jcgy
+                component: ()=> import('@/views/frontend/jcgy.vue')
             },
             {
                 path: '/rwjs',
-                component: Rwjs
+                component: ()=> import('@/views/frontend/rwjs.vue')
             },
             {
                 path: '/gywe',
-                component: Gywe
+                component: ()=> import('@/views/frontend/gywe.vue')
             },
             {
                 path: '/:service/gkxq/:id',
-                component: Gkxq,
+                component: ()=> import('@/views/frontend/gkIndex.vue'),
                 props: true
             }
         ]
@@ -49,22 +39,29 @@ const adminRouter = [
     {
         path: '/login',
         name: 'Login',
-        component: Login
+        component: ()=> import('@/views/backend/Login.vue')
     },
     {
         path: '/admin/',
-        component: AdminHome,
-        // meta: {requiresAuth: true}
+        component: ()=> import('@/views/backend/adminHome.vue'),
+        meta: {requiresAuth: true},
         children: [
             {
                 path: '',
-                component: () => import('./views/backend/rcgl.vue')
+                component: () => import('@/views/backend/rcgl.vue')
             },
             {
                 path: 'jcgl',
-                component: Rcdh
+                component: ()=>import('@/views/backend/jcgl.vue')
+            },
+            {
+                path: 'userManage',
+                component: ()=>import('@/views/backend/userManage.vue')
+            },
+            {
+                path: 'userCenter',
+                component: ()=>import('@/views/backend/userCenter.vue')
             }
-
             ]
     }
 ];
@@ -100,8 +97,11 @@ router.beforeEach((to, from, next) => {
 // 确保你的项目中有一个checkAuthentication函数来检查用户是否已登录
 // 这个函数可能会检查localStorage、Vuex状态管理或其他认证服务
 function checkAuthentication() {
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    return isAuthenticated;
+    const userData = localStorage.getItem('user');
+    if (userData) {
+        const userObj = JSON.parse(userData);
+        return userObj && userObj.isAuthenticated!== undefined? userObj.isAuthenticated : false;
+    }
+    return false;
 }
-
 export default router;

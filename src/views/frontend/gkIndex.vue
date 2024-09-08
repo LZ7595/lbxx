@@ -20,8 +20,7 @@
 </template>
 
 <script>
-import request from "@/request/request.js";
-
+import request from '@/request/request.js';
 export default {
     name: "gkIndex",
     props: ['id', 'service'],

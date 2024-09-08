@@ -3,6 +3,7 @@
             class="el-menu-demo"
             mode="horizontal"
             :ellipsis="false"
+            router
     >
         <li>
             <router-link to="/admin">
@@ -13,10 +14,10 @@
                 />
             </router-link>
         </li>
-        <el-menu-item index="/admin">Processing Center</el-menu-item>
+        <el-menu-item index="/admin">后台管理</el-menu-item>
         <el-sub-menu index="2">
             <template #title>{{ user }}</template>
-            <el-menu-item index="2-1">用户中心</el-menu-item>
+            <el-menu-item index="/admin/userCenter">用户中心</el-menu-item>
             <el-menu-item @click="handleLogout">退出登录</el-menu-item>
         </el-sub-menu>
     </el-menu>
@@ -40,7 +41,7 @@ export default {
             // 然后调用API服务来执行登出逻辑
             try {
                 await userStore.logout(userStore.token); // 假设userStore中存储了token
-                router.push('/login'); // 登出成功后重定向到登录页面
+                await router.push('/login'); // 登出成功后重定向到登录页面
             } catch (error) {
                 console.error('Failed to logout:', error);
                 // 处理登出失败的情况

@@ -1,13 +1,13 @@
 <template>
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-        <router-link class="navbar-brand mr-0 mr-md-2" to="/user/home" >
+        <router-link class="navbar-brand mr-0 mr-md-2" to="/" >
             <img src="../assets/logo.jpg" alt="蜡笔小新分享站" width="60px"/>
         </router-link>
 
         <div class="navbar-nav-scroll">
             <ul class="navbar-nav bd-navbar-nav flex-row">
                 <li class="nav-item">
-                    <router-link class="nav-link " to="/" :class="{'active': $route.path === '/'}">首页</router-link>
+                    <router-link class="nav-link " to="/" :class="{'active': $route.path === '/home'}">首页</router-link>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link" to="/rcdh" :class="{'active': isActive('/rcdh')}">日常动画</router-link>

@@ -2,7 +2,7 @@
     <div class="xko">
         <div class="container xkk">
             <div class="row xrow">
-                <div class="col-12">
+                <div class="col-12" id="dmjs">
                     <h1>动漫介绍</h1>
                     <p>蜡笔小新》是一部由日本漫画家臼井仪人创作的漫画作品，于1990年开始连载。该作不仅成为日本漫画的代表之一，还衍生出了多部动画、电影以及丰富的周边产品，赢得了广泛的国际影响力。</p>
                     <p>故事的主人公是野原新之助，通称小新，一个天真烂漫、顽皮捣蛋的五岁男孩。小新的生活以他与家人、朋友之间的趣事和冒险为中心，展现了充满笑声和温馨的日常生活。小新的家庭成员包括他的父母野原广志和野原美伢，爷爷野原阿财，还有婶婶野原玛丽。</p>
@@ -28,8 +28,7 @@
 </template>
 
 <script>
-import request from "@/request/request.js";
-
+import request from '@/request/request.js';
 export default {
     name: "rwjs",
     data() {

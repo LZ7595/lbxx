@@ -56,8 +56,8 @@ export default {
                 if (response.success) {
                     // 登录成功，可以在这里添加其他逻辑，如路由跳转
                     const redirect = router.currentRoute.value.query.redirect || '/';
-                    // alert('登录成功')
-                    // router.push(redirect);
+                    alert('登录成功')
+                    router.push(redirect);
 
                 } else {
                     // 登录失败处理

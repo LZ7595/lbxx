@@ -5,9 +5,9 @@
             <div class="row">
                 <div class="col-3" v-for="item in items" :key="item.id" @click="goToDetail(item.id)">
                     <div class="card card1">
-                            <img :src="item.img" class="card-img-top" :alt="item.name" :title="item.name">
+                        <img :src="item.img" class="card-img-top" :alt="item.name" :title="item.name">
                         <div class="card-body">
-                                <h5 class="card-title">{{ item.name }}</h5>
+                            <h5 class="card-title">{{ item.name }}</h5>
                             <p class="card-text">{{ item.num }}集</p>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import request from "@/request/request.js";
+import request from '@/request/request.js';
 
 export default {
     name: "Rcdh",
@@ -90,115 +90,142 @@ export default {
 </script>
 
 <style scoped>
-ul{
+ul {
     margin: 0;
 }
-.card{
+
+.card {
     border: 2px solid #000;
     background-color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
 }
-.card:hover .card-title{
+
+.card:hover .card-title {
     color: rgb(150, 150, 150);
     transition: 0.5s;
 }
+
 .card:hover {
     background-color: rgba(255, 255, 255, 0.9);
     transition: 0.5s;
 }
-.card1{
+
+.card1 {
     width: 16rem;
     margin: 10px;
     height: 480px;
 }
-.card1 img{
+
+.card1 img {
     height: 350px;
 }
-.card-body .card-title{
+
+.card-body .card-title {
     height: 50px;
     overflow: hidden;
 }
-.bgo{
+
+.bgo {
     background: url(../../assets/背景4.jpg) no-repeat center;
     background-size: cover;
 }
-.pagination{
+
+.pagination {
     float: left;
 }
-.pagination li{
+
+.pagination li {
     background: #44c2d3;
     padding: 12px 15px;
     margin: 10px;
     float: left;
 }
-.pagination .active{
+
+.pagination .active {
     background: #44c2d3;;
 }
-.pagination .active a{
+
+.pagination .active a {
     color: black;
 }
-.pag{
+
+.pag {
     height: 80px;
 }
-.pag a{
+
+.pag a {
     color: #fff;
     text-decoration: none;
 }
-.pag a:hover{
+
+.pag a:hover {
     color: #000;
     text-decoration: none;
 }
-.pag button{
+
+.pag button {
     float: left;
     background: #44c2d3;
     padding: 10px 15px;
     margin: 10px;
 }
+
 @media (max-width: 1200px) {
-    .card1{
+    .card1 {
         width: 14rem;
         height: 450px;
     }
-    .card1 img{
+
+    .card1 img {
         height: 305px;
     }
 }
+
 @media (max-width: 992px) {
-    .card1{
+    .card1 {
         width: 10.5rem;
         height: 380px;
     }
-    .card1 img{
+
+    .card1 img {
         height: 228px;
     }
 }
+
 @media (max-width: 768px) {
-    .card-body .card-title{
+    .card-body .card-title {
         height: 80px;
     }
-    .card1{
+
+    .card1 {
         width: 8rem;
         height: 320px;
     }
-    .card1 img{
+
+    .card1 img {
         height: 172px;
     }
-    .card1 .card-text{
+
+    .card1 .card-text {
         font-size: 12px;
     }
-    .bgo{
-        background: url(../../assets/背景2.jpg) no-repeat center ;
+
+    .bgo {
+        background: url(../../assets/背景2.jpg) no-repeat center;
         background-size: cover;
         height: auto;
     }
-    .container h1{
+
+    .container h1 {
         text-align: center;
     }
-    .pag button{
+
+    .pag button {
         padding: 5px 8px;
         font-size: 12px;
     }
-    .pag .pagination li{
+
+    .pag .pagination li {
         padding: 7px 8px;
         font-size: 12px;
     }
