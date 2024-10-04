@@ -3,4 +3,5 @@
 
 前端技术栈：Vue3, Bootstrap, Element Plus, pinia, axios <br>
 后端技术栈：SpringBoot3, java17, jwt, mybatis Plus, pagehelper, jpa, lombok
+
 mysql 5.7.26
